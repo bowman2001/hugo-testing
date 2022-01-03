@@ -1,0 +1,12 @@
+{{ $r := "" }}
+{{ $name := .Destination }}
+{{ with .Page.Resources.GetMatch $name }}
+	{{ $r = . }}
+{{ else }}
+	{{ with resources.Get $name }}
+		{{ $r = . }}
+  {{ else }}
+		{{ warnf "There is no '%s' in the local resources." $name }}
+	{{ end }}
+{{ end }}
+{{ return $r }}

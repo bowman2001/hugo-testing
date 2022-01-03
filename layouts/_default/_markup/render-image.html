@@ -1,0 +1,3 @@
+{{ $img := ( partial "get-resource.html" . ) }}
+{{ $img_small := ($img.Resize "100x") }}
+<img style="float: left; padding-right: 10px" src="{{ $img_small.RelPermalink | safeURL }}" alt="{{ .Text }}">
